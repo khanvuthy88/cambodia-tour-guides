@@ -62,7 +62,7 @@ if ( ! function_exists( 'cambodia_tour_guides_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'cambodia-tour-guides' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'cambodia-tour-guides' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'cambodia-tour-guides' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma */
@@ -73,24 +73,24 @@ if ( ! function_exists( 'cambodia_tour_guides_entry_footer' ) ) :
 			}
 		}
 
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'cambodia-tour-guides' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-			echo '</span>';
-		}
+		// if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		// 	echo '<span class="comments-link">';
+		// 	comments_popup_link(
+		// 		sprintf(
+		// 			wp_kses(
+		// 				/* translators: %s: post title */
+		// 				__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'cambodia-tour-guides' ),
+		// 				array(
+		// 					'span' => array(
+		// 						'class' => array(),
+		// 					),
+		// 				)
+		// 			),
+		// 			get_the_title()
+		// 		)
+		// 	);
+		// 	echo '</span>';
+		// }
 
 		edit_post_link(
 			sprintf(
@@ -146,3 +146,15 @@ if ( ! function_exists( 'cambodia_tour_guides_post_thumbnail' ) ) :
 		endif; // End is_singular().
 	}
 endif;
+
+
+if (! function_exists('cambodia_tourguides_com_tags')) {
+	function cambodia_tourguides_com_tags(){
+		/* translators: used between list items, there is a space after the comma */
+		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'cambodia-tourguides-com' ) );
+		if ( $tags_list ) {
+			/* translators: 1: list of tags. */
+			printf( '<span class="tags-links"><i class="icon-map-marker"></i> Location ' . esc_html__( '%1$s', 'cambodia-tourguides-com' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+		}
+	}
+}

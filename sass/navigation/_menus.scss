@@ -1,9 +1,14 @@
 .main-navigation {
-	clear: both;
+	//clear: both;
 	display: block;
 	float: left;
-	width: 100%;
-
+	//width: 100%;
+	margin-top:14px;
+	@media screen and (max-width: 37.5em){
+		width: 100%;
+    	float: none;
+    	margin-top:0px;
+	}
 	ul {
 		display: none;
 		list-style: none;
@@ -52,15 +57,27 @@
 	li {
 		float: left;
 		position: relative;
-
+		@media screen and (max-width: 37.5em) {
+			width: 100%;
+		    line-height: 40px;
+		    border-bottom: 1px solid #eee;
+			&:first-child {
+			    border-top: 1px solid #eee;
+			    margin-top: 20px;
+			}
+		}
 		&:hover > a,
 		&.focus > a {
 		}
 	}
 
 	a {
-		display: block;
-		text-decoration: none;
+		text-transform: uppercase;
+	    padding: 0 19px;
+	    transition: all .25s linear;
+	    -webkit-transition: all .25s linear;
+	    -moz-transition: all .25s linear;
+	    text-decoration: none;
 	}
 
 	.current_page_item > a,
@@ -104,4 +121,9 @@
 		text-align: right;
 		width: 50%;
 	}
+}
+.menu-toggle {
+    float: right;
+    margin-top: -40px;
+    margin-right: 10px;
 }

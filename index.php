@@ -15,6 +15,20 @@
 get_header();
 ?>
 
+	<div class="about-content">
+		<div class="container">
+		<h1>About us</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</div>
+	</div>
+<div class="container">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -28,17 +42,44 @@ get_header();
 				</header>
 				<?php
 			endif;
-
+			?>
+			<header>
+				<h1 class="page-title">Lastest</h1>
+			</header>
+			<?php 
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
 
+				$i+=1;
 				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+				* Include the Post-Type-specific template for the content.
+				* If you want to override this in a child theme, then include a file
+				* called content-___.php (where ___ is the Post Type name) and that will be used instead.
+				*/
+
+				?>
+				<article id="post-<?php the_ID(); ?>" 
+				<?php 
+					if(($i+2)%3===0){
+						echo 'class="first"';
+					}
+				?>
+				<?php 
+					if($i%3===0){
+						echo 'class="last"';
+						$i=0;
+					}
+				?>
+				
+				>
+					<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
+				</article><!-- #post-<?php the_ID(); ?> -->
+				<?php 
+				
+				if($i%3===0){
+					echo '<div class="clear"></div>';
+				}
 
 			endwhile;
 

@@ -14,16 +14,37 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-	color: $color__text-input;
-	border: 1px solid $color__border-input;
-	border-radius: 3px;
-	padding: 3px;
+	padding: 8px 12px;
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #D8D8D8;
+    font-family: inherit;
 
 	&:focus {
 		color: $color__text-input-focus;
 	}
+	&.search-field{
+		background: none;
+	    text-indent: 10px;
+	    height: 50px;
+	}
+	&.search-submit{
+		height: 40px;
+    	width: 40px;
+	}
 }
-
+input{
+	padding: 8px 12px;
+    font-size: 14px;
+    color: #666;
+    border: 1px solid #D8D8D8;
+    font-family: inherit;
+    margin:0px;
+}
+.widget_search {
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
 select {
 	border: 1px solid $color__border-input;
 }

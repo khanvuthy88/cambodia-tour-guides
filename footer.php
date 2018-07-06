@@ -10,10 +10,15 @@
  */
 
 ?>
-
+		</div><!--.container -->
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
+		<?php if ( is_active_sidebar( 'sidebar-02' ) ) : ?>
+			<div id="sidebar">
+				<?php dynamic_sidebar( 'sidebar-02' ); ?>
+			</div>
+		<?php endif; ?>
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'cambodia-tour-guides' ) ); ?>">
 				<?php
